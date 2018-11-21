@@ -40,7 +40,8 @@ defmodule Cellular.MixProject do
     [
       {:nerves, "~> 1.3", runtime: false},
       {:shoehorn, "~> 0.4"},
-      {:ring_logger, "~> 0.4"}
+      {:ring_logger, "~> 0.4"},
+      {:httpoison, "~> 1.4"}
     ] ++ deps(@target)
   end
 
@@ -50,7 +51,9 @@ defmodule Cellular.MixProject do
   defp deps(target) do
     [
       {:nerves_runtime, "~> 0.6"},
-      {:nerves_init_gadget, "~> 0.4"}
+      {:nerves_init_gadget, "~> 0.4"},
+      {:nerves_runtime_shell, "~> 0.1.0"},
+      {:nerves_uart, "~> 1.2"}
     ] ++ system(target)
   end
 

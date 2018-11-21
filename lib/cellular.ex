@@ -1,18 +1,8 @@
 defmodule Cellular do
-  @moduledoc """
-  Documentation for Cellular.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Cellular.hello
-      :world
-
-  """
-  def hello do
-    :world
+def connect do
+    System.cmd("mknod", ["/dev/ppp", "c", "108", "0"])
+    System.cmd("modprobe", ["option"])
+    File.write!("/sys/bus/usb-serial/drivers/option1/new_id", "05c6 90b2")
+    System.cmd("/usr/sbin/pppd", ["call", "nova", "/dev/ttyUSB2"])
   end
 end
